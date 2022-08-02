@@ -5,11 +5,17 @@ import Contact from "./component/Contact";
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Routes } from 'react-router';
 import Navbar from "./component/Navbar";
-// import { Link } from "react-router-dom";
+import { useState } from "react";
 function App() {
-  return (
+  const [Button, setButton] = useState(true);
+  const handleclick=()=>{
+    setButton(!Button);
+  }
+  return (<>
+    <button className="button-navbar" onClick={handleclick}>{!Button ? `Show` : `Hide` }</button>
     <div className="Flex-box">
-      <Navbar/>
+
+     { Button && <Navbar/>}
       <div className="mainpg">
         <BrowserRouter>
         <Routes>
@@ -20,6 +26,7 @@ function App() {
       </BrowserRouter>
       </div>
     </div>
+    </>
   );
 }
 
